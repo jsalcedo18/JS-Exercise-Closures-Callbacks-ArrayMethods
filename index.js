@@ -71,6 +71,7 @@ function inning(score) {
 
 console.log(inning(3));
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -82,15 +83,27 @@ finalScore(inning, 9) might return:
   "Home": 11,
   "Away": 5,
 }
-
 */ 
+// Worked with Britt's Q&A: I have notes with comprehension (if need to see)...
 
-function finalScore(/*code Here*/){
+function finalScore(inningCB, inngingsNum( {
+	let homeScore = 0;
+	let awayScore = 0;
+	
+	for(let i = 0, I < inningsNum; i++) {
+		homeScore = homeScore + inningCB();
+		awayScore = awayScore + inningCB();
+	} //for loop end
+	
+	return {
+		Home: homeScore,
+		Away: awayScore,
+	}//return loop end
+}//finalScore loop end
 
-  /*Code Here*/
+Console.log('Task 3: ',  finalScore(inning, 9));
 
-}
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -113,8 +126,39 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+// Worked with Britt's Q&A: I have notes with comprehension (currently working on)...
+
+function getInningScore (inningCB) {
+	return {
+		Home: inningCB(),
+		Away: inningCB(),
+	}//return loop end
+}//getInningScore end
+
+function scoreboard (inningScoreCB, inningCB, inningsNum) {
+	Const scoreByInning = [];
+	
+	let homeScore = 0;
+	let awayScore = 0;
+	
+	for(let i = 0; i < innings, i++) {
+		const currentInning = inningScoreCB(inningCB);
+		homeScore = homeScore + currentInning.Home
+		awayScore = awayScore + currentInning.Away
+		scoreByInning.push(`Inning ${ i + 1}: Away ${currentInning.Away} - Home: ${currentInning.Home}`);
+	}//scoreBoard loop end
+	
+	If (homeScore === awayScore) {
+		scoreByInning.push(`you will need to play another inning`);
+	}else{
+		scoreByInning.push(`Final Score: Away: ${awayScore} - Home: ${homeScore}`);
+	}
+	
+	return scoreByInning;
+	
+}//scoreboard end
+
+Console.log('Task 4: ', scoreboard(getInningScore, inning, 9));
+
 
 
